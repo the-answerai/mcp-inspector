@@ -22,21 +22,21 @@
     "cli"
   ],
   "scripts": {
-    "build": "npm run build-server && npm run build-client && npm run build-cli",
-    "build-server": "cd server && npm run build",
-    "build-client": "cd client && npm run build",
-    "build-cli": "cd cli && npm run build",
-    "dev": "concurrently \"cd client && npm run dev\" \"cd server && npm run dev\"",
-    "dev:windows": "concurrently \"cd client && npm run dev\" \"cd server && npm run dev:windows\"",
+    "build": "pnpm run build-server && pnpm run build-client && pnpm run build-cli",
+    "build-server": "cd server && pnpm run build",
+    "build-client": "cd client && pnpm run build",
+    "build-cli": "cd cli && pnpm run build",
+    "dev": "concurrently \"cd client && pnpm run dev\" \"cd server && pnpm run dev\"",
+    "dev:windows": "concurrently \"cd client && pnpm run dev\" \"cd server && pnpm run dev:windows\"",
     "start": "node client/bin/start.js",
-    "start-server": "cd server && npm run start",
-    "start-client": "cd client && npm run preview",
-    "test": "npm run prettier-check && cd client && npm test",
-    "test-cli": "cd cli && npm run test",
+    "start-server": "cd server && pnpm run start",
+    "start-client": "cd client && pnpm run preview",
+    "test": "pnpm run prettier-check && cd client && pnpm test",
+    "test-cli": "cd cli && pnpm run test",
     "prettier-fix": "prettier --write .",
     "prettier-check": "prettier --check .",
-    "prepare": "npm run build",
-    "publish-all": "npm publish --workspaces --access public && npm publish --access public"
+    "prepare": "pnpm run build",
+    "publish-all": "pnpm publish --access public -r"
   },
   "dependencies": {
     "@modelcontextprotocol/inspector-cli": "^0.11.0",
