@@ -1,6 +1,6 @@
 {
   "name": "@modelcontextprotocol/inspector",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "Model Context Protocol inspector",
   "license": "MIT",
   "author": "Anthropic, PBC (https://anthropic.com)",
@@ -26,6 +26,7 @@
     "build-server": "cd server && pnpm run build",
     "build-client": "cd client && pnpm run build",
     "build-cli": "cd cli && pnpm run build",
+    "clean": "rimraf ./node_modules ./client/node_modules ./cli/node_modules ./build ./client/dist ./server/build ./cli/build ./pnpm-lock.yaml && pnpm install",
     "dev": "concurrently \"cd client && pnpm run dev\" \"cd server && pnpm run dev\"",
     "dev:windows": "concurrently \"cd client && pnpm run dev\" \"cd server && pnpm run dev:windows\"",
     "start": "node client/bin/start.js",
@@ -39,11 +40,12 @@
     "publish-all": "pnpm publish --access public -r"
   },
   "dependencies": {
-    "@modelcontextprotocol/inspector-cli": "^0.11.0",
-    "@modelcontextprotocol/inspector-client": "^0.11.0",
-    "@modelcontextprotocol/inspector-server": "^0.11.0",
-    "@modelcontextprotocol/sdk": "^1.10.2",
+    "@modelcontextprotocol/inspector-cli": "^0.12.0",
+    "@modelcontextprotocol/inspector-client": "^0.12.0",
+    "@modelcontextprotocol/inspector-server": "^0.12.0",
+    "@modelcontextprotocol/sdk": "^1.11.2",
     "concurrently": "^9.0.1",
+    "open": "^10.1.0",
     "shell-quote": "^1.8.2",
     "spawn-rx": "^5.1.2",
     "ts-node": "^10.9.2",
@@ -55,6 +57,7 @@
     "@types/shell-quote": "^1.7.5",
     "jest-fixed-jsdom": "^0.0.9",
     "prettier": "3.3.3",
+    "rimraf": "^6.0.1",
     "typescript": "^5.4.2"
   }
 }
