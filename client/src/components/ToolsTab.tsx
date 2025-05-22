@@ -10,9 +10,9 @@ import type { JsonValue, JsonSchemaType } from "@/utils/jsonUtils";
 import { generateDefaultValue } from "@/utils/schemaUtils";
 import {
   CallToolResultSchema,
-  CompatibilityCallToolResult,
-  ListToolsResult,
-  Tool,
+  type CompatibilityCallToolResult,
+  type ListToolsResult,
+  type Tool,
 } from "@modelcontextprotocol/sdk/types.js";
 import { Loader2, Send } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -82,7 +82,7 @@ const ToolsTab = ({
               <span className="text-green-600 font-semibold">Success</span>
             )}
           </h4>
-          {structuredResult.content.map((item, index) => (
+          {structuredResult.content?.map((item, index) => (
             <div key={index} className="mb-2">
               {item.type === "text" && (
                 <JsonView data={item.text} isError={isError} />
@@ -90,7 +90,7 @@ const ToolsTab = ({
               {item.type === "image" && (
                 <img
                   src={`data:${item.mimeType};base64,${item.data}`}
-                  alt="Tool result image"
+                  alt="Tool result visualization"
                   className="max-w-full h-auto"
                 />
               )}
@@ -102,6 +102,7 @@ const ToolsTab = ({
                     className="w-full"
                   >
                     <p>Your browser does not support audio playback</p>
+                    <track kind="captions" />
                   </audio>
                 ) : (
                   <JsonView data={item.resource} />
