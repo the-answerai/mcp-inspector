@@ -128,6 +128,26 @@ describe("Sidebar Environment Variables", () => {
 
       expect(valueInput).toHaveProperty("type", "text");
     });
+
+    it("should import variables from pasted text", () => {
+      const setEnv = jest.fn();
+      renderSidebar({ env: {}, setEnv });
+
+      openEnvVarsSection();
+
+      const bulkButton = screen.getByTestId("env-bulk-button");
+      fireEvent.click(bulkButton);
+
+      const textarea = screen.getByTestId("env-bulk-textarea");
+      fireEvent.change(textarea, {
+        target: { value: "KEY1=value1\nKEY2=value2" },
+      });
+
+      const importButton = screen.getByText("Import");
+      fireEvent.click(importButton);
+
+      expect(setEnv).toHaveBeenCalledWith({ KEY1: "value1", KEY2: "value2" });
+    });
   });
 
   describe("Authentication", () => {
